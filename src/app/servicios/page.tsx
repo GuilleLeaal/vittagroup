@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export const metadata = {
-  title: "Servicios | Vitta Group",
+  title: "Servicios",
   description:
     "Compra, venta, alquiler e inversión inmobiliaria en Montevideo con asesoramiento profesional.",
 }

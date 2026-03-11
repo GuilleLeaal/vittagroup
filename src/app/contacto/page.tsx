@@ -1,7 +1,7 @@
 import ContactForm from "@/components/contact-form";
 
 export const metadata = {
-  title: "Contacto | Vitta Group",
+  title: "Contacto",
   description:
     "Consultas por compra, venta, alquiler e inversión inmobiliaria en Montevideo.",
 };
