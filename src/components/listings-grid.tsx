@@ -7,7 +7,7 @@ type Listing = any;
 
 export default function ListingsGrid({ items }: { items: Listing[] }) {
   const [kind, setKind] = useState<"all" | "property" | "development">("all");
-  const [op, setOp] = useState<"all" | "sale" | "rent">("all");
+  const [op, setOp] = useState<"all" | "sale" | "rent" | "consult">("all");
 
   const filtered = useMemo(() => {
     return (items ?? []).filter((x) => {
@@ -22,7 +22,9 @@ export default function ListingsGrid({ items }: { items: Listing[] }) {
       <div className="rounded-2xl border border-border bg-card/80 p-4 md:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="space-y-3">
-            <div className="text-sm text-muted-foreground">Filtrar catálogo</div>
+            <div className="text-sm text-muted-foreground">
+              Filtrar catálogo
+            </div>
 
             <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
               <div className="flex flex-wrap gap-2">
@@ -55,12 +57,17 @@ export default function ListingsGrid({ items }: { items: Listing[] }) {
                 <Chip active={op === "rent"} onClick={() => setOp("rent")}>
                   Alquiler
                 </Chip>
+                <Chip active={op === "consult"} onClick={() => setOp("consult")}>
+                  Consultar
+                </Chip>
               </div>
             </div>
           </div>
 
           <div className="text-sm text-muted-foreground xl:text-right">
-            <span className="font-medium text-foreground">{filtered.length}</span>{" "}
+            <span className="font-medium text-foreground">
+              {filtered.length}
+            </span>{" "}
             resultado{filtered.length === 1 ? "" : "s"}
           </div>
         </div>
