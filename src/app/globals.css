@@ -8,12 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-.site-navbar {
-  position: static !important;
-  top: auto !important;
-  inset: auto !important;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

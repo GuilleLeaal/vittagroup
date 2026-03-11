@@ -9,13 +9,13 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import "../app/globals.css";
 
 function waHref() {
   const msg =
@@ -33,7 +33,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="site-navbar border-b border-border bg-background">
+    <header className="site-navbar border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 z-50">
       <div className="max-w-7xl mx-auto px-6 min-h-[72px] flex items-center justify-between">
         <Link
           href="/"
@@ -95,7 +95,7 @@ export default function Navbar() {
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[320px] sm:w-[360px]">
+            <SheetContent side="right" className="w-[320px] sm:w-[360px] z-[60]">
               <SheetHeader className="text-left">
                 <SheetTitle className="flex items-center">
                   <Image
@@ -113,28 +113,27 @@ export default function Navbar() {
                   <MobileNavItem
                     href="/"
                     active={isActive(pathname, "/")}
-                    onPick={() => setOpen(false)}
                   >
                     Inicio
                   </MobileNavItem>
+
                   <MobileNavItem
                     href="/propiedades"
                     active={isActive(pathname, "/propiedades")}
-                    onPick={() => setOpen(false)}
                   >
                     Propiedades
                   </MobileNavItem>
+
                   <MobileNavItem
                     href="/servicios"
                     active={isActive(pathname, "/servicios")}
-                    onPick={() => setOpen(false)}
                   >
                     Servicios
                   </MobileNavItem>
+
                   <MobileNavItem
                     href="/contacto"
                     active={isActive(pathname, "/contacto")}
-                    onPick={() => setOpen(false)}
                   >
                     Contacto
                   </MobileNavItem>
@@ -142,11 +141,13 @@ export default function Navbar() {
 
                 <Separator />
 
-                <Button asChild className="w-full rounded-xl">
-                  <a href={waHref()} target="_blank" rel="noreferrer">
-                    Consultar por WhatsApp
-                  </a>
-                </Button>
+                <SheetClose asChild>
+                  <Button asChild className="w-full rounded-xl">
+                    <a href={waHref()} target="_blank" rel="noreferrer">
+                      Consultar por WhatsApp
+                    </a>
+                  </Button>
+                </SheetClose>
 
                 <p className="text-xs text-muted-foreground">
                   Atención y coordinación por WhatsApp.
@@ -193,37 +194,36 @@ function DesktopNavItem({
 function MobileNavItem({
   href,
   children,
-  onPick,
   active,
 }: {
   href: string;
   children: React.ReactNode;
-  onPick: () => void;
   active: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      onClick={onPick}
-      aria-current={active ? "page" : undefined}
-      className={[
-        "flex items-center justify-between w-full rounded-xl px-3 py-2.5 border transition",
-        active
-          ? "bg-muted/40 border-border text-foreground"
-          : "border-transparent hover:bg-muted/30 text-foreground/85",
-      ].join(" ")}
-    >
-      <span className="flex items-center gap-2">
-        <span
-          className={[
-            "h-1.5 w-1.5 rounded-full",
-            active ? "bg-amber-500" : "bg-amber-500/60",
-          ].join(" ")}
-        />
-        <span className={active ? "font-medium" : undefined}>{children}</span>
-      </span>
+    <SheetClose asChild>
+      <Link
+        href={href}
+        aria-current={active ? "page" : undefined}
+        className={[
+          "flex items-center justify-between w-full rounded-xl px-3 py-2.5 border transition",
+          active
+            ? "bg-muted/40 border-border text-foreground"
+            : "border-transparent hover:bg-muted/30 text-foreground/85",
+        ].join(" ")}
+      >
+        <span className="flex items-center gap-2">
+          <span
+            className={[
+              "h-1.5 w-1.5 rounded-full",
+              active ? "bg-amber-500" : "bg-amber-500/60",
+            ].join(" ")}
+          />
+          <span className={active ? "font-medium" : undefined}>{children}</span>
+        </span>
 
-      <span className="text-xs text-muted-foreground">Ir →</span>
-    </Link>
+        <span className="text-xs text-muted-foreground">Ir →</span>
+      </Link>
+    </SheetClose>
   );
 }
