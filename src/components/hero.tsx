@@ -37,10 +37,8 @@ export default function Hero({ featured }: { featured?: any }) {
 
   return (
     <section className="relative overflow-hidden border-b border-border">
-      {/* subtle gold divider (matches footer/navbar) */}
-      <div className="pointer-events-none absolute bottom-0 h-px bg-gradient-to-r from-transparent via-amber-500/35 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 h-px w-full bg-gradient-to-r from-transparent via-amber-500/35 to-transparent" />
 
-      {/* Background */}
       {img ? (
         <div className="absolute inset-0">
           <Image
@@ -58,17 +56,16 @@ export default function Hero({ featured }: { featured?: any }) {
         <div className="absolute inset-0 bg-gradient-to-b from-card to-background" />
       )}
 
-      {/* Content */}
       <div
         className="
           relative max-w-7xl mx-auto px-6
-          min-h-[calc(100svh-4rem)]  /* 4rem = h-16 navbar */
           flex items-center
-          py-12 sm:py-14
+          py-16 sm:py-14
+          min-h-0
+          sm:min-h-[calc(100dvh-72px)]
         "
       >
         <div className="w-full max-w-3xl">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full border border-border bg-background/55 backdrop-blur">
             <span className="font-semibold text-foreground">
               Vitta <span className="text-amber-500">Group</span>
@@ -77,7 +74,7 @@ export default function Hero({ featured }: { featured?: any }) {
             <span className="text-muted-foreground">Negocios Inmobiliarios · Montevideo</span>
           </div>
 
-          <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          <h1 className="mt-5 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
             Inversiones inmobiliarias en Montevideo, con respaldo profesional
           </h1>
 
@@ -85,7 +82,6 @@ export default function Hero({ featured }: { featured?: any }) {
             Compra, venta y alquiler. Oportunidades seleccionadas y gestión transparente de principio a fin.
           </p>
 
-          {/* CTAs */}
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <Link
               href="/propiedades"
@@ -109,8 +105,7 @@ export default function Hero({ featured }: { featured?: any }) {
             </a>
           </div>
 
-          {/* compact chips */}
-          <div className="mt-8 flex flex-wrap gap-2 max-w-2xl">
+          <div className="mt-6 flex flex-wrap gap-2 max-w-2xl">
             <Chip>Compra</Chip>
             <Chip>Venta</Chip>
             <Chip>Alquiler</Chip>
@@ -118,9 +113,8 @@ export default function Hero({ featured }: { featured?: any }) {
             <Chip muted>Asesoramiento profesional</Chip>
           </div>
 
-          {/* Featured mini (compact) */}
           {featured?.title && slug && (
-            <div className="mt-8 rounded-2xl border border-border bg-card/55 backdrop-blur p-4 sm:p-5">
+            <div className="mt-6 rounded-2xl border border-border bg-card/55 backdrop-blur p-4 sm:p-5">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="text-xs text-muted-foreground">Destacado</div>
@@ -161,7 +155,6 @@ export default function Hero({ featured }: { featured?: any }) {
             </div>
           )}
 
-          {/* subtle scroll hint (optional but useful on fullscreen heroes) */}
           <div className="mt-10 hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500/70" />
             Deslizá para ver destacados
