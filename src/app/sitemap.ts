@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { client } from "@/lib/sanity.client";
 import { listingSlugsQuery } from "@/lib/sanity.queries";
 
+export const revalidate = 60;
+
 const SITE_URL = "https://vittagroup.uy";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

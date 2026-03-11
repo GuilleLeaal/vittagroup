@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity.client";
 import { listingsQuery } from "@/lib/sanity.queries";
 import ListingsGrid from "@/components/listings-grid";
 
+export const revalidate = 60;
+
 export default async function PropiedadesPage() {
   const listings = await client.fetch(listingsQuery);
 

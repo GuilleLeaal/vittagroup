@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import { urlFor } from "@/lib/sanity.image";
 import { notFound } from "next/navigation";
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 const SITE_URL = "https://vittagroup.uy";
 const WHATSAPP_NUMBER = "59892112466";
 

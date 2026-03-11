@@ -7,6 +7,8 @@ import { featuredListingsQuery } from "@/lib/sanity.queries";
 import ListingCard from "@/components/listing-card";
 import { urlFor } from "@/lib/sanity.image";
 
+export const revalidate = 60;
+
 function waHref(title?: string) {
   const msg = title
     ? `Hola, me interesa "${title}". ¿Me pasás más información?`
